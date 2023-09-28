@@ -6,6 +6,7 @@ import pulp
 income = pd.read_csv('dados/al_rasheed/net_income.csv', sep=';')
 constraints = pd.read_csv('dados/al_rasheed/constraints.csv', sep=';')
 crops = list(income.columns)
+
 lb = dict(zip(crops, list((np.array(crops) == 'Wheat').astype(np.int64)*1500)))
 years = 1
 rotation = pd.read_csv('dados/al_rasheed/rotations.csv', sep=';')
