@@ -1,0 +1,13 @@
+variable;int_lb;int_ub;bin_lb;bin_ub
+Wheat;1500;;0;1
+Beetroot;0;;0;1
+Cloves;0;;0;1
+Broad_Bean;0;;0;1
+Green_Onion;0;;0;1
+Autumn_Potatoes;0;;0;1
+Sunflower;0;;0;1
+Maize;0;;0;1
+Tomatoes;0;;0;1
+Cucumbers;0;;0;1
+Okra;0;;0;1
+Watermelon;0;;0;1
