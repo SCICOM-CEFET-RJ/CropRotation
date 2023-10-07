@@ -97,6 +97,15 @@ def min_max_normalization(of, min_max):
 def weighted_sum(model, ofs, alphas):
     model += pulp.lpSum([ofs[i] * alphas[i] for i in range(len(ofs))])
 
+def epsilon_constraint(model, ofs, idx_obj, epsilons):
+    model += ofs[idx_obj]
+    i = 0
+    for idx in range(len(ofs)):
+        if idx == idx_obj:
+            continue
+        model += ofs[idx] >= epsilons[i]
+        i += 1
+
 
 def sum_cost_of_values(_cost, _var_values, _crops_year, name, start, end):
     ofs_values = {f'{name}_total': 0} 
