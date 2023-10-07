@@ -94,3 +94,33 @@ def min_max_normalization(of, min_max):
 
     return (of - zn)/_z
 
+def weighted_sum(model, ofs, alphas):
+    model += pulp.lpSum([ofs[i] * alphas[i] for i in range(len(ofs))])
+
+
+def sum_cost_of_values(_cost, _var_values, _crops_year, name, start, end):
+    ofs_values = {f'{name}_total': 0} 
+    for key, value in _var_values.items():
+        var_value = round(value * _cost[_crops_year[key]], 2)
+        key_of = f'{name}_{key[start:end]}' 
+
+        if ofs_values.get(key_of) == None:
+            ofs_values[key_of] = 0
+
+        ofs_values[f'{name}_total'] += var_value
+        ofs_values[key_of] += var_value
+    return ofs_values
+
+def sum_of_var_values(_var_values, name, start, end):
+    ofs_values = {f'{name}_total': 0} 
+    for key, value in _var_values.items():
+        var_value = value
+        key_of = f'{name}_{key[start:end]}' 
+
+        if ofs_values.get(key_of) == None:
+            ofs_values[key_of] = 0
+
+        ofs_values[f'{name}_total'] += var_value
+        ofs_values[key_of] += var_value
+    return ofs_values
+
